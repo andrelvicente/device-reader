@@ -1,19 +1,19 @@
 import express from 'express'
 import { Request, Response } from 'express'
-import { CreateContactUseCase } from '../../domain/interfaces/use-cases/create-contact-use-case'
-import { GetAllContactsUseCase } from '../../domain/interfaces/use-cases/get-all-contacts-use-case'
+import { CreateMessageUseCase } from '../../domain/interfaces/use-cases/create-message-use-case'
+import { GetAllMessagesUseCase } from '../../domain/interfaces/use-cases/get-all-messages-use-case'
 
 
-export default function ContactsRouter(
-    getAllContactsUseCase: GetAllContactsUseCase,
-    createContactUseCase: CreateContactUseCase
+export default function MessagesRouter(
+    getAllMessagesUseCase: GetAllMessagesUseCase,
+    createMessageUseCase: CreateMessageUseCase
 ) {
     const router = express.Router()
 
     router.get('/', async (req: Request, res: Response) => {
         try {
-            const contacts = await getAllContactsUseCase.execute()
-            res.send(contacts)
+            const messages = await getAllMessagesUseCase.execute()
+            res.send(messages)
         } catch (err) {
             res.status(500).send({ message: "Error fetching data" })
         }
@@ -21,7 +21,7 @@ export default function ContactsRouter(
 
     router.post('/', async (req: Request, res: Response) => {
         try {
-            await createContactUseCase.execute(req.body)
+            await createMessageUseCase.execute(req.body)
             res.statusCode = 201
             res.json({ message: "Created" })
         } catch (err) {
