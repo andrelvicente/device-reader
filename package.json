@@ -6,7 +6,7 @@
   "scripts": {
     "test": "jest --watchAll --collectCoverage",
     "dev:build": "tsc",
-    "dev:serve": "nodemon -e js -w lib lib/main.js"
+    "dev:server": "nodemon -e js -w lib lib/main.js"
   },
   "keywords": [],
   "author": "",
@@ -18,6 +18,7 @@
     "@types/pg": "^8.6.5",
     "@types/supertest": "^2.0.11",
     "jest": "^27.5.1",
+    "nodemon": "^3.0.1",
     "supertest": "^6.2.2",
     "ts-jest": "^27.1.3",
     "ts-node": "^10.7.0",
