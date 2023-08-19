@@ -11,8 +11,8 @@ async function getPGDS() {
     const db = new Pool({
         user: 'postgres',
         host: 'localhost',
-        database: 'CONTACTSDB',
-        password: '',
+        database: 'device_reader',
+        password: 'TremDoMundo@2023!',
         port: 5432,
     })
     return new PGMessageDataSource(db)
