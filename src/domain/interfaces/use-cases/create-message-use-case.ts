@@ -1,5 +1,6 @@
-import { MessageRequestModel } from "../../models/message";
+import { MessageRequestModel, MessageResponseModel } from "../../models/message";
 
 export interface CreateMessageUseCase {
-    execute(message: MessageRequestModel): void;
+  execute(message: MessageRequestModel): Promise<MessageResponseModel>;
 }
+

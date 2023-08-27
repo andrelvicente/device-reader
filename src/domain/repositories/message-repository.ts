@@ -4,14 +4,34 @@ import { MessageRequestModel, MessageResponseModel } from "../models/message";
 
 export class MessageRepositoryImpl implements MessageRepository {
   messageDataSource: MessageDataSource;
+
   constructor(messageDataSource: MessageDataSource) {
     this.messageDataSource = messageDataSource;
   }
 
-  async createMessage(message: MessageRequestModel) {
-    await this.messageDataSource.create(message);
+  async getUnsynchronizedMessagesRemotely(): Promise<
+    MessageResponseModel[] | undefined
+  > {
+    const result =
+      await this.messageDataSource.getUnsynchronizedMessagesRemotely();
+    return result;
   }
-  
+
+  async createMessage(message: MessageRequestModel): Promise<MessageResponseModel> {
+    const result = await this.messageDataSource.create(message);
+    return result;
+  }
+
+  async updateSyncedRemotely(
+    messageId: number,
+    isSyncedRemotely: boolean
+  ): Promise<void> {
+    await this.messageDataSource.updateSyncedRemotely(
+      messageId,
+      isSyncedRemotely
+    );
+  }
+
   async getMessages(): Promise<MessageResponseModel[]> {
     const result = await this.messageDataSource.getAll();
     return result;
