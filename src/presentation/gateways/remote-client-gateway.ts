@@ -4,7 +4,7 @@ import "dotenv/config";
 
 export class RemoteClientGateway implements CallRemoteClientUseCase {
   private readonly defaultUrl =
-    "https://run.mocky.io/v3/db1692e8-e91c-4e5d-a161-d92310b61e81";
+    "https://device-reader-core-741352d6875c.herokuapp.com/message/publish";
 
   constructor() {}
 
