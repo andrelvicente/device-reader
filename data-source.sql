@@ -15,7 +15,7 @@ CREATE TABLE tb_message(
   device_id INT NOT NULL,
   data jsonb NOT NULL DEFAULT '{}' :: jsonb,
   message_read_date TIMESTAMP NOT NULL,
-  is_synced_remotely BOOLEAN NOT NULL DEFAULT 't',
+  is_synced_remotely BOOLEAN NOT NULL DEFAULT 'f',
   active BOOLEAN NOT NULL DEFAULT 't',
   created_at TIMESTAMP NOT NULL,
   updated_at TIMESTAMP NOT NULL,
